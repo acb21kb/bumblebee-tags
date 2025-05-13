@@ -1,23 +1,23 @@
 # Bumblebees: remote identification of individual bees using coloured retro-reflective tags
 
 ## Introduction
-The ability to track bee behaviour is extremely important in understanding the inner workings of bee colonies and how they interact with the environment. Bees play an essential role in pollination and monitoring the activity of
-individual bees can allow for a more in depth view of the effects that changes in the environment can produce, such as pesticides or climate change.
+Understanding the flight paths and behaviours of bees is important for research into pollination patterns and monitoring ecosystems, making the ability to track behavioural patterns, such as foraging, a key area of research.
 
-This project aims to aid in the tracking of bees in their natural environment without the tracking system disrupting their behaviour, by developing an effective method of identifying individual bees using a camera set up and small retro-reflective tags with coloured light filters to give each tag a unique
-colour. Previous research [1] [2] developed a lightweight and low cost approach using these tags. The process uses consecutive images captured with and without flash, aligning them and then subtracting the no-flash image to find the brightest spot which should be the location of the tag in the image.
+This project aims to identify individual bees by the colour of their tags using the retro-reflective tag and colour filter design, developed by Joyce [2] and Smith *et al.* [1]. The objective is to optimise the accuracy of colour detection and reduce misidentification.
 
-Due to the photos being captured in an outdoor environment there will be other reflections that are also picked up on camera. To decrease these false
-positives, any reflections that are stationary between photos are removed. As well as this, a machine learning algorithm was developed to identify any
-non-stationary reflections that are larger than a pixel, as the reflections from the bee tags are expected to be smaller than this measure, and only consider
-the reflections that remain.
+Images of tags will be processed using a function that fits the tag data and generates a reconstruction. The pixel value error of this reconstruction will be minimised through an optimisation function and produce a more accurate estimate of the true filter colour of the tag, improving classification accuracy. Compared to the averaging method used by Joyce [2], this approach achieved an increase of 5.0% accuracy for 40 tag colours.
 
-As it is expected to appear as less than a pixel, the processing needed to detect tag colours will need to take into account the colour interference
-from the camera’s Bayer filter. A Bayer filter is an alternating pattern of red, green and blue pixels that overlays the photo captured by the camera
-and would slightly alter the appearance of the reflection when smaller than a single pixel.
+Increasing the number of distinguishable tag colours and achieving higher classification accuracy will allow more bees to be tracked simultaneously, allowing researchers to use multiple bees and substantially increase throughput of behavioural experiments.
+
+The main objective is to assess whether a more accurate estimate of the tag colour could be produced by using the increased pixel coverage of the tag reflection when captured out-of-focus, coupled with an optimisation function to minimise pixel value error.
 
 ## Description
-Methods and approaches to developing a solution to this project will be developed here.
+Methods and approaches to researching a solution to this project were developed in [development_code.ipynb](development_code.ipynb), with the final streamlined code saved in [full_implementation.ipynb](full_implementation.ipynb).
+
+The fitted values of all tags in the dataset were saved in [all_tag_predictions.pkl](all_tag_predictions.pkl) for more time efficient processing.
+
+## Conclusion
+Overall, this approach resulted in a more accurate tag colour detections, enabling better tag classification. With further work and supplementary testing, this method could be developed to a workable addition to the retro-reflective tracking system developed by Smith *et al.* [1] and Joyce [2].
 
 ## Contributors
 Author - Katie Broadhurst <kbroadhurst1@gmail.com>
